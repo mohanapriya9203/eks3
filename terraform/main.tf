@@ -12,7 +12,7 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  cluster_name = "education-eks-${random_string.suffix.result}"
+  cluster_name = "eks-creation-${random_string.suffix.result}"
 }
 
 resource "random_string" "suffix" {
@@ -50,7 +50,7 @@ module "eks" {
   version = "20.8.5"
 
   cluster_name    = local.cluster_name
-  cluster_version = "1.29"
+  cluster_version = "1.30"
 
   cluster_endpoint_public_access           = true
   enable_cluster_creator_admin_permissions = true
