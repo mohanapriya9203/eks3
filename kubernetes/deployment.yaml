@@ -1,19 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: hello-world
+  labels:
+    app: hello-world
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: nginx
-  replicas: 1
+      app: hello-world
   template:
     metadata:
       labels:
-        app: nginx
+        app: hello-world
     spec:
       containers:
-      - name: nginx
-        image: nginx
+      - name: hello-world
+        image: hashicorp/http-echo:latest
+        args:
+        - "-text-Hello World!"
         ports:
-        - containerPort: 80
+        - containerPort: 5678
