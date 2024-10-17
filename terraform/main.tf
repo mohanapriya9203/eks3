@@ -12,12 +12,7 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  cluster_name = "eks-creation-${random_string.suffix.result}"
-}
-
-resource "random_string" "suffix" {
-  length  = 8
-  special = false
+  cluster_name = "eks-creation"
 }
 
 module "vpc" {
@@ -77,7 +72,7 @@ module "eks" {
 
       min_size     = 1
       max_size     = 3
-      desired_size = 2
+      desired_size = 1
     }
 
     two = {
