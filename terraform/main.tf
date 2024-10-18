@@ -12,7 +12,7 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  cluster_name = "eks-creation"
+  cluster_name = "eks-creation1"
 }
 
 module "vpc" {
